@@ -21,6 +21,7 @@ import { useMixPanelChapterLogUploader } from '@/utils/mixpanel'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import type React from 'react'
 import { useCallback, useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { useImmerReducer } from 'use-immer'
 
 const App: React.FC = () => {
@@ -133,6 +134,14 @@ const App: React.FC = () => {
       <Layout>
         <Header>
           <DictChapterButton />
+          <Tooltip content="上传文章逐句跟打">
+            <NavLink
+              className="block rounded-lg px-3 py-1 text-lg transition-colors duration-300 ease-in-out hover:bg-indigo-400 hover:text-white focus:outline-none dark:text-white dark:text-opacity-60 dark:hover:text-opacity-100"
+              to="/articles"
+            >
+              文章练习
+            </NavLink>
+          </Tooltip>
           <PronunciationSwitcher />
           <Switcher />
           <StartButton isLoading={isLoading} />

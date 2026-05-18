@@ -16,6 +16,8 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 const AnalysisPage = lazy(() => import('./pages/Analysis'))
+const ArticlesPage = lazy(() => import('./pages/Articles'))
+const ArticlePracticePage = lazy(() => import('./pages/ArticlePractice'))
 const GalleryPage = lazy(() => import('./pages/Gallery-N'))
 
 if (process.env.NODE_ENV === 'production') {
@@ -57,6 +59,8 @@ function Root() {
             ) : (
               <>
                 <Route index element={<TypingPage />} />
+                <Route path="/articles" element={<ArticlesPage />} />
+                <Route path="/article/:id" element={<ArticlePracticePage />} />
                 <Route path="/gallery" element={<GalleryPage />} />
                 <Route path="/analysis" element={<AnalysisPage />} />
                 <Route path="/error-book" element={<ErrorBook />} />

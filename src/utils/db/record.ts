@@ -145,6 +145,73 @@ export class ReviewRecord implements IReviewRecord {
   }
 }
 
+export interface IArticleRecord {
+  id?: number
+  title: string
+  content: string
+  sentences: string[]
+  currentSentenceIndex: number
+  createdAt: number
+  updatedAt: number
+}
+
+export class ArticleRecord implements IArticleRecord {
+  id?: number
+  title: string
+  content: string
+  sentences: string[]
+  currentSentenceIndex: number
+  createdAt: number
+  updatedAt: number
+
+  constructor(title: string, content: string, sentences: string[]) {
+    const now = getUTCUnixTimestamp()
+    this.title = title
+    this.content = content
+    this.sentences = sentences
+    this.currentSentenceIndex = 0
+    this.createdAt = now
+    this.updatedAt = now
+  }
+}
+
+export interface IArticleProgressRecord {
+  articleId: number
+  sentenceIndex: number
+  correctCount: number
+  wrongCount: number
+  targetLength: number
+  elapsedTime: number
+  updatedAt: number
+}
+
+export class ArticleProgressRecord implements IArticleProgressRecord {
+  articleId: number
+  sentenceIndex: number
+  correctCount: number
+  wrongCount: number
+  targetLength: number
+  elapsedTime: number
+  updatedAt: number
+
+  constructor(
+    articleId: number,
+    sentenceIndex: number,
+    correctCount: number,
+    wrongCount: number,
+    targetLength: number,
+    elapsedTime: number,
+  ) {
+    this.articleId = articleId
+    this.sentenceIndex = sentenceIndex
+    this.correctCount = correctCount
+    this.wrongCount = wrongCount
+    this.targetLength = targetLength
+    this.elapsedTime = elapsedTime
+    this.updatedAt = getUTCUnixTimestamp()
+  }
+}
+
 export interface IRevisionDictRecord {
   dict: string
   revisionIndex: number

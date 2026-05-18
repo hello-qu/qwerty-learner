@@ -10,7 +10,7 @@ import * as ScrollArea from '@radix-ui/react-scroll-area'
 import { useAtomValue } from 'jotai'
 import { createContext, useCallback, useEffect, useMemo } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import type { Updater } from 'use-immer'
 import { useImmer } from 'use-immer'
 import IconInfo from '~icons/ic/outline-info'
@@ -69,7 +69,12 @@ export default function GalleryPage() {
             <div className="flex h-full flex-col overflow-y-auto">
               <div className="flex h-20 w-full items-center justify-between pb-6 pr-20">
                 <LanguageTabSwitcher />
-                <DictRequest />
+                <div className="flex items-center gap-3">
+                  <NavLink className="my-btn-primary" to="/articles">
+                    文章练习
+                  </NavLink>
+                  <DictRequest />
+                </div>
               </div>
               <ScrollArea.Root className="flex-1 overflow-y-auto">
                 <ScrollArea.Viewport className="h-full w-full ">
